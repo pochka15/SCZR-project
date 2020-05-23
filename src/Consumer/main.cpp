@@ -4,6 +4,6 @@
 
 int main() {
 //    std::cout << textFromMessageQueue();
-    std::cout << textFromSharedMemory();
+    std::cout << textFromSharedMemory() << '\n';
     return 0;
 }

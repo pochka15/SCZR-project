@@ -10,15 +10,19 @@ add_subdirectory(src/Others)
 
 # Consumer
 add_executable(Consumer-app src/Consumer/main.cpp)
-target_link_libraries(Consumer-app consumer-lib others-lib)
+target_link_libraries(Consumer-app consumer-lib others-lib
+#        Real-time library
+        rt)
 target_include_directories(Consumer-app PRIVATE src/Consumer)
 
 # Producer
 add_executable(Producer-app src/Producer/main.cpp)
-target_link_libraries(Producer-app producer-lib others-lib)
+target_link_libraries(Producer-app producer-lib others-lib
+        #        Real-time library
+        rt)
 target_include_directories(Producer-app PRIVATE src/Consumer)
 
-add_compile_options(
+target_compile_options(Consumer-app BEFORE PRIVATE
         #        -Werror
         -Wall
         -Wextra

@@ -2,7 +2,6 @@
 #include "producer.h"
 
 int main() {
-    sendViaMessageQueue("Hello world");
-    std::cout << "Message was sent\n";
+    sendViaSharedMemory("Hello world");
     return 0;
 }

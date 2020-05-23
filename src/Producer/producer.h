@@ -4,5 +4,6 @@
 
 void sendViaMessageQueue(const std::string &message);
 
+void sendViaSharedMemory(const std::string &message);
 
 #endif //SCZR_PROJECT_PRODUCER_H

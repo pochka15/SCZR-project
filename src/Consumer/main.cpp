@@ -3,6 +3,7 @@
 #include "consumer.h"
 
 int main() {
-    std::cout << messageQueueText();
+//    std::cout << textFromMessageQueue();
+    std::cout << textFromSharedMemory();
     return 0;
 }

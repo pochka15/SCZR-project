@@ -2,6 +2,7 @@
 #define SCZR_PROJECT_DATABASE_H
 
 #include <sstream>
+#include <utility>
 
 struct Date {
     int year;
@@ -27,7 +28,7 @@ struct DbRow {
     long infected_number;
     Date date;
 
-    DbRow(std::string country, long infected_number, Date date) : country(country),
+    DbRow(std::string country, long infected_number, Date date) : country(std::move(country)),
                                                                   infected_number(infected_number),
                                                                   date(date) {}
 

@@ -5,6 +5,5 @@
 #include "database.h"
 
 void runConsumer() {
-//    std::cout << textFromSharedMemory() << std::endl;
-    generateRandomDatabaseFile();
+    std::cout << textFromSharedMemory() << std::endl;
 }

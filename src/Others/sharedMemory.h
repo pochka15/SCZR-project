@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+const int kSharedMemoryBufferSize = 4096;
+
 void sendViaSharedMemory(const std::string &message);
 
 std::string textFromSharedMemory();

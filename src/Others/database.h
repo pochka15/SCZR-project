@@ -44,4 +44,6 @@ struct DbRow {
  */
 void generateRandomlyFilledTable();
 
+void getData();
+
 #endif //SCZR_PROJECT_DATABASE_H

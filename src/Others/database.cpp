@@ -141,3 +141,58 @@ void generateRandomlyFilledTable() {
     sqlite3_close(openedDatabase);
 }
 
+std::string generatestring()
+{
+    std::stringstream in_stream(kDbData);
+    std::stringstream out_stream;
+    std::string line;
+    std::string country;
+    std::string out_string;
+    long default_infected_number;
+    srand( time( NULL ) );
+    unsigned long commaPos;
+
+    while (std::getline(in_stream, line)) {
+        commaPos = line.find(',');
+        country = line.substr(0, commaPos);
+        default_infected_number = std::stol(line.substr(commaPos + 1)); // start after comma position
+        out_string=(out_string+country + ", "+ std::to_string(rand()%1000) + ", "+ "2020.01.01\n");
+
+    }
+    return out_string;
+
+}
+void insertData(sqlite3 *openedDb) {
+    std::string database_string;
+    std::stringstream in_stream;
+    in_stream.str(generatestring());
+    std::stringstream out_stream;
+    std::string line;
+    out_stream << "INSERT INTO \"COVID-statistic\" (Country, InfectedNumer, Date)\n"
+                  "VALUES ";
+    // First line
+    std::getline(in_stream, line);
+    unsigned long commaPos = line.find(',');
+    std::string country = line.substr(0, commaPos);
+    long default_infected_number = std::stol(line.substr(commaPos + 1)); // start after comma position
+    out_stream << "(" << DbRow(country, default_infected_number, Date(2021, 6, 4)) << ")";
+    // Other lines
+    while (std::getline(in_stream, line)) {
+        commaPos = line.find(',');
+        country = line.substr(0, commaPos);
+        default_infected_number = std::stol(line.substr(commaPos + 1)); // start after comma position
+        out_stream << ",\n(" << DbRow(country, default_infected_number, Date(2021, 6, 4)) << ")";
+    }
+    out_stream << ";";
+    execStatement(openedDb, out_stream.str().c_str());
+}
+
+void getData() {
+    sqlite3 *openedDatabase = openedDb();
+    createTableIfNotExists(openedDatabase);
+    clearTable(openedDatabase);
+    insertData(openedDatabase);
+    sqlite3_close(openedDatabase);
+}
+
+

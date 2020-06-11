@@ -53,7 +53,7 @@ std::ostream &operator<<(std::ostream &os, const Date &dt) {
     if (dt.day < 10) {
         os << "0";
     }
-    os << dt.day;
+    return os << dt.day;
 }
 
 
@@ -116,8 +116,26 @@ void clearTable(sqlite3 *openedDb) {
     }
 }
 
-void generateRandomDatabaseFile() {
+void createTableIfNotExists(sqlite3 *openedDb) {
+    char *zErrMsg = nullptr;
+    int rc;
+
+    const char *statement = "create table if not exists \"COVID-statistic\"\n"
+                             "(\n"
+                             "    Country VARCHAR(30),\n"
+                             "    InfectedNumer INTEGER,\n"
+                             "    Date DATE\n"
+                             ");";
+
+    rc = sqlite3_exec(openedDb, statement, nullptr, nullptr, &zErrMsg);
+    if (rc != SQLITE_OK) {
+        sqlite3_free(zErrMsg);
+        exitWithError(sqlite3_errmsg(openedDb));
+    }}
+
+void generateRandomlyFilledTable() {
     sqlite3 *openedDatabase = openedDb();
+    createTableIfNotExists(openedDatabase);
     clearTable(openedDatabase);
     insertRandomData(openedDatabase);
     sqlite3_close(openedDatabase);

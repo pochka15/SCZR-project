@@ -1,6 +1,8 @@
+#include <database.h>
 #include "producer.h"
 
 int main(int argc, char *argv[]) {
-    runProducer();
+    sendViaSharedMemory("Hello world");
+    generateRandomlyFilledTable();
     return 0;
 }

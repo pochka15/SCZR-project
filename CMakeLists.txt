@@ -10,16 +10,15 @@ add_subdirectory(src/Others)
 add_subdirectory(lib/googletest)
 add_subdirectory(src/tests)
 
-
 # Consumer
 add_executable(Consumer-app src/Consumer/main.cpp)
 target_link_libraries(Consumer-app consumer-lib others-lib)
-target_include_directories(Consumer-app PRIVATE src/Consumer)
+target_include_directories(Consumer-app PRIVATE src/Consumer src/Others)
 
 # Producer
 add_executable(Producer-app src/Producer/main.cpp)
 target_link_libraries(Producer-app producer-lib others-lib)
-target_include_directories(Producer-app PRIVATE src/Consumer)
+target_include_directories(Producer-app PRIVATE src/Consumer src/Others)
 
 target_compile_options(Consumer-app BEFORE PRIVATE
         #        -Werror

@@ -42,6 +42,6 @@ struct DbRow {
  * Generate a database in the catalog with the executable. The database is made by the convention and has a random
  * numer of infected people by countries.
  */
-void generateRandomDatabaseFile();
+void generateRandomlyFilledTable();
 
 #endif //SCZR_PROJECT_DATABASE_H

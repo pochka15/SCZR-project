@@ -9,3 +9,12 @@ TEST(ShMem, singleThreadCorrectBytesReceived) {
     getData();
     ASSERT_TRUE(text == textFromSharedMemory());
 }
+
+
+TEST(ShMem, kasia) {
+    std::string text = generatestring();
+    sendViaSharedMemory(text);
+    std::cout<<text;
+    getData();
+    ASSERT_TRUE(text == textFromSharedMemory());
+}

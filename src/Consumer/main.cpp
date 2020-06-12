@@ -3,10 +3,6 @@
 #include "schedulingPolicies.h"
 
 int main() {
-//    std::cout << textFromSharedMemory();
-    enableFifoPolicy(1);
-    for (int i = 0; i < 1000000; ++i) {
-        std::cout << "consumer\n";
-    }
+    std::cout << "Text from shared memory: " << textFromSharedMemory();
     return 0;
 }

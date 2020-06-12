@@ -148,11 +148,13 @@ void processesSchedulingTest() {
 }
 
 int main(int argc, char *argv[]) {
-//    sendViaSharedMemory("Hello world");
-//    generateRandomlyFilledTable();
-    enableFifoPolicy(2);
-    for (int i = 0; i < 1000000; ++i) {
-        std::cout << "producer\n";
-    }
+    sendViaSharedMemory("Hello world");
+    std::cout << "The text Hello world was sent\n";
+    //    generateRandomlyFilledTable();
+//    enableFifoPolicy(2);
+//    for (int i = 0; i < 1000000; ++i) {
+//        std::cout << "producer\n";
+//    }
+
     return 0;
 }

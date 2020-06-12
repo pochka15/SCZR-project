@@ -20,13 +20,16 @@ Producer sends the data using any of available communication methods the consume
 
 ```shell script
 # inside the build directory
-./src/tests/Google_Tests_run --gtest_filter=ShMem.singleThreadCorrectBytesReceived:ShMem/*.singleThreadCorrectBytesRec\
-eived:*/ShMem.singleThreadCorrectBytesReceived/*:*/ShMem/*.singleThreadCorrectBytesReceived:ShMem.CHILD_PARENT_PROCESS\
-ES_CORRECTED_TEXT_RECEIVED:ShMem/*.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_RECEIVED:*/ShMem.CHILD_PARENT_PROCESSES_CORRE\
-CTED_TEXT_RECEIVED/*:*/ShMem/*.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_RECEIVED:MessageQueue.CHILD_PARENT_PROCESSES_CORR\
-ECTED_TEXT_RECEIVED:MessageQueue/*.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_RECEIVED:*/MessageQueue.CHILD_PARENT_PROCESSE\
-S_CORRECTED_TEXT_RECEIVED/*:*/MessageQueue/*.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_RECEIVED:Sych.NOTIFICATION_WORKS:Sy\
-ch/*.NOTIFICATION_WORKS:*/Sych.NOTIFICATION_WORKS/*:*/Sych/*.NOTIFICATION_WORKS
+./src/tests/Google_Tests_run --gtest_filter=ShMem.singleThr\
+eadCorrectBytesReceived:ShMem/*.singleThreadCorrectBytesReceived:*/ShMem.singleThreadCorrectBytesReceived/*:*/ShMem/*.\
+singleThreadCorrectBytesReceived:ShMem.resultsAreCreated:ShMem/*.resultsAreCreated:*/ShMem.resultsAreCreated/*:*/ShMe\
+m/*.resultsAreCreated:ShMem.kasia:ShMem/*.kasia:*/ShMem.kasia/*:*/ShMem/*.kasia:ShMem.CHILD_PARENT_PROCESSES_CORRECTE\
+D_TEXT_RECEIVED:ShMem/*.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_RECEIVED:*/ShMem.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_R\
+ECEIVED/*:*/ShMem/*.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_RECEIVED:MessageQueue.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_R\
+ECEIVED:MessageQueue/*.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_RECEIVED:*/MessageQueue.CHILD_PARENT_PROCESSES_CORRECTED_\
+TEXT_RECEIVED/*:*/MessageQueue/*.CHILD_PARENT_PROCESSES_CORRECTED_TEXT_RECEIVED:Sych.NOTIFICATION_WORKS:Sych/*.NOTIFICA\
+TION_WORKS:*/Sych.NOTIFICATION_WORKS/*:*/Sych/*.NOTIFICATION_WORKS:MainTests.test_6:MainTests/*.test_6:*/MainTests.tes\
+t_6/*:*/MainTests/*.test_6 --gtest_color=no
 ```
 
 - Note: test results are located in the _build/src/tests/_
@@ -40,7 +43,7 @@ ch/*.NOTIFICATION_WORKS:*/Sych.NOTIFICATION_WORKS/*:*/Sych/*.NOTIFICATION_WORKS
     sudo ./Producer-app
     ```
 
-- terminal 1 (inside the build directory)
+- terminal 2 (inside the build directory)
 
     ```shell script
     # We need sudo to set the scheduling policy

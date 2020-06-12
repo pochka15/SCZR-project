@@ -29,6 +29,8 @@ S_CORRECTED_TEXT_RECEIVED/*:*/MessageQueue/*.CHILD_PARENT_PROCESSES_CORRECTED_TE
 ch/*.NOTIFICATION_WORKS:*/Sych.NOTIFICATION_WORKS/*:*/Sych/*.NOTIFICATION_WORKS
 ```
 
+- Note: test results are located in the _build/src/tests/_
+
 ## Run the producer and consumer applications
 
 - terminal 1 (inside the build directory)

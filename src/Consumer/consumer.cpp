@@ -33,5 +33,5 @@ std::string textFromMessageQueue() {
     if (received_bytes_n == -1) {
         exitWithError("Consumer can't receive the data");
     }
-    return std::string(buffer, received_bytes_n);
+    return std::string(buffer);
 }

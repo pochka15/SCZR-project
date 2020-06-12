@@ -35,3 +35,16 @@ std::string textFromMessageQueue() {
     }
     return std::string(buffer);
 }
+
+void waitForNewData() {
+    const int kBufferSize = 1;
+    char buffer[kBufferSize];
+    mqd_t descriptor = mq_open("/notification_queue", O_RDONLY);
+    if (descriptor == -1) {
+        exitWithError("Consumer can't open the notification queue");
+    }
+    ssize_t received_bytes_n = mq_receive(descriptor, buffer, kBufferSize, nullptr);
+    if (received_bytes_n == -1) {
+        exitWithError("Consumer can't receive the data");
+    }
+}

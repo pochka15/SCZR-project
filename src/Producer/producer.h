@@ -11,4 +11,9 @@ void sendViaSharedMemory(const std::string &message);
 
 void sendViaMessageQueue(const std::string &message);
 
+/**
+ * Notify the consumer that new data has been written to the shared memory or another previously enabled mutual storage
+ */
+void notifyConsumer();
+
 #endif //SCZR_PROJECT_PRODUCER_H

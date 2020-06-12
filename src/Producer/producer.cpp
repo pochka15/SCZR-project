@@ -2,6 +2,8 @@
 #include <sys/mman.h>
 #include <fcntl.h>
 #include "utilities.h"
+#include "producer.h"
+
 #include <unistd.h>
 #include <cstring>
 #include <mqueue.h>
@@ -39,5 +41,22 @@ void sendViaMessageQueue(const std::string &message) {
         exitWithError("Producer cannot send the data");
     }
     sleep(10); // Wait until consumer starts using the message queue
+    mq_unlink("/test_queue");
+}
+
+void notifyConsumer() {
+    struct mq_attr queue_attributes;
+    queue_attributes.mq_flags = 0;
+    queue_attributes.mq_maxmsg = 10;
+    queue_attributes.mq_msgsize = 1;
+    queue_attributes.mq_curmsgs = 0;
+    mqd_t descriptor = mq_open("/notification_queue", O_CREAT | O_RDWR, 0644, &queue_attributes);
+    if (descriptor == -1) {
+        exitWithError("Producer cannot open notification queue");
+    }
+    ssize_t send_result = mq_send(descriptor, "\0", 1, 0);
+    if (send_result == -1) {
+        exitWithError("Producer cannot send the data");
+    }
     mq_unlink("/test_queue");
 }

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(SCZR-project)
 
+find_package(Threads REQUIRED)
+
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
@@ -17,7 +19,7 @@ target_include_directories(Consumer-app PRIVATE src/Consumer src/Others)
 
 # Producer
 add_executable(Producer-app src/Producer/main.cpp)
-target_link_libraries(Producer-app producer-lib others-lib)
+target_link_libraries(Producer-app producer-lib others-lib Threads::Threads)
 target_include_directories(Producer-app PRIVATE src/Consumer src/Others)
 
 target_compile_options(Consumer-app BEFORE PRIVATE

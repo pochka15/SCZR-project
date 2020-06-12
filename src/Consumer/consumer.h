@@ -8,4 +8,6 @@ std::string textFromSharedMemory();
  */
 std::string textFromMessageQueue();
 
+void waitForNewData();
+
 #endif //SCZR_PROJECT_CONSUMER_H
